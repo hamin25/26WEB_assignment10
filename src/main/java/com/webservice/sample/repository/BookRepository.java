@@ -1,10 +1,16 @@
 package com.webservice.sample.repository;
 
+import com.webservice.sample.dto.BookResponse;
 import com.webservice.sample.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface BookRepository extends JpaRepository<Book, Long> {
     // Week 09: All basic CRUD methods are inherited from JpaRepository.
+
+    List<BookResponse> findByCategory(String category);
+
 }
 /*
 STEP2 - 2

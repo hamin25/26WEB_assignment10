@@ -50,6 +50,11 @@ public class BookService {
                 .orElseThrow(() -> new ResponseStatusException(
                         HttpStatus.NOT_FOUND, "Book not found: " + id));
     }
+
+    public List<BookResponse> findByCategory(String category){
+        return repository.findByCategory(category);
+    };
+
 }
 
 /*

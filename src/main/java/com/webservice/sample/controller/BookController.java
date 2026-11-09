@@ -33,6 +33,11 @@ public class BookController {
     @GetMapping
     public List<BookResponse> findAll() { return service.findAll(); }
 
+    @GetMapping("/category/{category}")
+    public List<BookResponse> findByCategory(@PathVariable String category){
+        return service.findByCategory(category);
+    }
+
     @GetMapping("/{id}")
     public BookResponse findById(@PathVariable Long id) { return service.findById(id); }
 
