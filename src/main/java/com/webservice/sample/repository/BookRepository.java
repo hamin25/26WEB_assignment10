@@ -11,7 +11,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<BookResponse> findByCategory(String category);
     List<BookResponse> findByPriceBetween(Integer min, Integer max);
-
+    List<BookResponse> findAllByOrderByPriceAsc();
 }
 /*
 STEP2 - 2

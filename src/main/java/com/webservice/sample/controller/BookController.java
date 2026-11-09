@@ -37,6 +37,11 @@ public class BookController {
         return service.findByPriceBetween(min,max);
     }
 
+    @GetMapping("/priceAsc")
+    public List<BookResponse> findAllByOrderByPriceAsc(){
+        return service.findAllByOrderByPriceAsc();
+    }
+
     @GetMapping("/{id}")
     public BookResponse findById(@PathVariable Long id) { return service.findById(id); }
 
