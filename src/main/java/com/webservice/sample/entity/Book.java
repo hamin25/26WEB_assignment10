@@ -1,14 +1,16 @@
 package com.webservice.sample.entity;
 
 import com.webservice.sample.dto.BookRequest;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 // STEP 2 -1
 /*
     Q1-1. @Entity : JPA가 클래스를 담당할 수 있게 객체와 DB 테이블을 연결하는 역할
@@ -35,6 +37,13 @@ public class Book {
     @Column(nullable = false, length = 50)
     private String category;
 
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    private LocalDateTime updatedAt;
+
     protected Book() { } // JPA uses the no-args constructor.
 
     public Book(BookRequest request) {
@@ -56,4 +65,6 @@ public class Book {
     public String getAuthor() { return author; }
     public Integer getPrice() { return price; }
     public String getCategory() { return category; }
+    public LocalDateTime getCreadtedAt() { return createdAt; }
+    public LocalDateTime getUpdatedAt(){ return updatedAt;}
 }
