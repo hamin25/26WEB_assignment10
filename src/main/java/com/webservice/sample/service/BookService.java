@@ -4,6 +4,7 @@ import com.webservice.sample.dto.BookRequest;
 import com.webservice.sample.dto.BookResponse;
 import com.webservice.sample.entity.Book;
 import com.webservice.sample.repository.BookRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -31,11 +32,12 @@ public class BookService {
         return BookResponse.from(findEntity(id));
     }
 
+    @Transactional
     public BookResponse update(Long id, BookRequest request) {
         Book book = findEntity(id);
         book.update(request);
         // Week 09: explicitly save (Week 10 changes this to Dirty Checking).
-        return BookResponse.from(repository.save(book));
+        return BookResponse.from(book);
     }
 
     public void delete(Long id) {
