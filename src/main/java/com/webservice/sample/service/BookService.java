@@ -55,6 +55,9 @@ public class BookService {
         return repository.findByCategory(category);
     };
 
+    public List<BookResponse> findByPriceBetween(Integer min, Integer max){
+        return repository.findByPriceBetween(min,max);
+    }
 }
 
 /*

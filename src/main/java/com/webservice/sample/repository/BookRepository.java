@@ -10,6 +10,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     // Week 09: All basic CRUD methods are inherited from JpaRepository.
 
     List<BookResponse> findByCategory(String category);
+    List<BookResponse> findByPriceBetween(Integer min, Integer max);
 
 }
 /*
